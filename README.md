@@ -1,1 +1,1 @@
-# Grantoftegaard Cashier
+# Grantoftegaard
