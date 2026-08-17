@@ -9,7 +9,7 @@ export const CartItems = () => {
 
   const handleBought = () => {
     window.umami?.track("checkout-cart", {
-      items: items.map(({ id, name, quantity }) => ({ id, name, quantity })),
+      items: items.flatMap(({ name, quantity }) => Array(quantity).fill(name)),
       revenue: totalPrice,
       currency: "DKK",
     });
