@@ -7,6 +7,15 @@ export const CartItems = () => {
     useCart();
   const totalPrice = getTotalPrice();
 
+  const handleBought = () => {
+    window.umami?.track("checkout-cart", {
+      items: items.map(({ id, name, quantity }) => ({ id, name, quantity })),
+      revenue: totalPrice,
+      currency: "DKK",
+    });
+    clearCart();
+  };
+
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-12">
@@ -78,9 +87,14 @@ export const CartItems = () => {
           <span>Total:</span>
           <span>{totalPrice} kr</span>
         </div>
-        <Button onClick={clearCart} variant="destructive" className="w-full">
-          Tøm Kurv
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button onClick={handleBought} className="w-full">
+            Køb
+          </Button>
+          <Button onClick={clearCart} variant="destructive" className="w-full">
+            Tøm Kurv
+          </Button>
+        </div>
       </div>
     </div>
   );
