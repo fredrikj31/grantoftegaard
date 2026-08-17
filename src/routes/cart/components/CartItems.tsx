@@ -1,4 +1,5 @@
 import { Trash2, Plus, Minus } from "lucide-react";
+import { useNavigate } from "react-router";
 import { useCart } from "../../../providers/Cart";
 import { Button } from "@shadcn-ui/components/ui/button";
 
@@ -6,6 +7,7 @@ export const CartItems = () => {
   const { items, removeItem, updateQuantity, getTotalPrice, clearCart } =
     useCart();
   const totalPrice = getTotalPrice();
+  const navigate = useNavigate();
 
   const handleBought = () => {
     window.umami?.track("checkout-cart", {
@@ -14,6 +16,7 @@ export const CartItems = () => {
       currency: "DKK",
     });
     clearCart();
+    navigate("/");
   };
 
   if (items.length === 0) {
