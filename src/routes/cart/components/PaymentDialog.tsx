@@ -100,9 +100,13 @@ export function PaymentDialog({ isOpen, items, totalPrice, onClose, onPaymentCon
               <div className="flex flex-col items-center gap-4">
                 <p className="text-sm text-muted-foreground text-center">Lad kunden scanne QR-koden for at betale</p>
                 {qrCodeUrl ? (
-                  <img src={qrCodeUrl} alt="MobilePay QR-kode" className="h-78 w-78 rounded-lg border border-border" />
+                  <img
+                    src={qrCodeUrl}
+                    alt="MobilePay QR-kode"
+                    className="h-72 w-h-72 rounded-lg border border-border"
+                  />
                 ) : (
-                  <div className="h-78 w-78 rounded-lg border border-border bg-muted animate-pulse" />
+                  <div className="h-72 w-h-72 rounded-lg border border-border bg-muted animate-pulse" />
                 )}
                 <Button onClick={handleMobilePayDone} className="w-full h-16">
                   Luk
