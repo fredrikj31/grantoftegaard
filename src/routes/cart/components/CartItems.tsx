@@ -6,8 +6,7 @@ import { Button } from "@shadcn-ui/components/ui/button";
 import { PaymentDialog, type PaymentMethod } from "./PaymentDialog";
 
 export const CartItems = () => {
-  const { items, removeItem, updateQuantity, getTotalPrice, clearCart } =
-    useCart();
+  const { items, removeItem, updateQuantity, getTotalPrice, clearCart } = useCart();
   const totalPrice = getTotalPrice();
   const navigate = useNavigate();
   const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
@@ -35,21 +34,14 @@ export const CartItems = () => {
     <div className="flex flex-col h-full">
       <div className="space-y-4">
         {items.map((item) => (
-          <div
-            key={item.id}
-            className="flex flex-col gap-3 rounded-lg border border-border bg-card p-4"
-          >
+          <div key={item.id} className="flex flex-col gap-3 rounded-lg border border-border bg-card p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="text-2xl">{item.emoji}</div>
               <div className="flex-1">
                 <p className="font-semibold">{item.name}</p>
-                <p className="text-sm text-muted-foreground">
-                  {item.price} kr each
-                </p>
+                <p className="text-sm text-muted-foreground">{item.price} kr each</p>
               </div>
-              <p className="font-bold text-lg">
-                {item.price * item.quantity} kr
-              </p>
+              <p className="font-bold text-lg">{item.price * item.quantity} kr</p>
             </div>
 
             <div className="flex items-center justify-between">
@@ -62,9 +54,7 @@ export const CartItems = () => {
                 >
                   <Minus className="h-4 w-4" />
                 </Button>
-                <span className="w-8 text-center font-semibold">
-                  {item.quantity}
-                </span>
+                <span className="w-8 text-center font-semibold">{item.quantity}</span>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -94,15 +84,12 @@ export const CartItems = () => {
           <span>Total:</span>
           <span>{totalPrice} kr</span>
         </div>
-        <div className="flex flex-col gap-2">
-          <Button
-            onClick={() => setIsPaymentDialogOpen(true)}
-            className="w-full"
-          >
-            Køb
-          </Button>
-          <Button onClick={clearCart} variant="destructive" className="w-full">
+        <div className="flex flex-row gap-2 overflow-hidden ">
+          <Button onClick={clearCart} variant="destructive" className="flex-1 h-16">
             Tøm Kurv
+          </Button>
+          <Button onClick={() => setIsPaymentDialogOpen(true)} className="flex-1 h-16">
+            Køb
           </Button>
         </div>
       </div>

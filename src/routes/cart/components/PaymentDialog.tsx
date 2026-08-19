@@ -25,9 +25,7 @@ interface PaymentDialogProps {
 }
 
 function buildMobilePayLink(items: CartItem[], totalPrice: number) {
-  const comment = items
-    .map((item) => `${item.quantity}x ${item.name}`)
-    .join("\n");
+  const comment = items.map((item) => `${item.quantity}x ${item.name}`).join("\n");
 
   const params = new URLSearchParams({
     phone: MOBILEPAY_PHONE,
@@ -38,20 +36,14 @@ function buildMobilePayLink(items: CartItem[], totalPrice: number) {
   return `https://qr.mobilepay.dk/paymentlink?${params.toString()}`;
 }
 
-export function PaymentDialog({
-  isOpen,
-  items,
-  totalPrice,
-  onClose,
-  onPaymentConfirmed,
-}: PaymentDialogProps) {
+export function PaymentDialog({ isOpen, items, totalPrice, onClose, onPaymentConfirmed }: PaymentDialogProps) {
   const [step, setStep] = useState<"choose" | "mobilepay-qr">("choose");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
 
   useEffect(() => {
     if (step !== "mobilepay-qr") return;
     const link = buildMobilePayLink(items, totalPrice);
-    QRCode.toDataURL(link, { width: 256 }).then(setQrCodeUrl);
+    QRCode.toDataURL(link, { width: 312, errorCorrectionLevel: "quartile" }).then(setQrCodeUrl);
   }, [step, items, totalPrice]);
 
   const handleClose = () => {
@@ -87,42 +79,32 @@ export function PaymentDialog({
 
             {step === "choose" ? (
               <div className="flex flex-col gap-3">
-                <p className="text-sm text-muted-foreground">
-                  Hvordan betaler kunden?
-                </p>
-                <Button
-                  onClick={handleCash}
-                  size="lg"
-                  className="w-full justify-start gap-3"
-                >
-                  <Banknote className="h-5 w-5" />
-                  Kontant
-                </Button>
-                <Button
-                  onClick={() => setStep("mobilepay-qr")}
-                  size="lg"
-                  variant="secondary"
-                  className="w-full justify-start gap-3"
-                >
-                  <Smartphone className="h-5 w-5" />
-                  MobilePay
-                </Button>
+                <p className="text-sm text-muted-foreground">Hvordan betaler kunden?</p>
+                <div className="flex flex-row gap-5">
+                  <Button onClick={handleCash} size="lg" className="w-full justify-center gap-2 flex-1 h-16">
+                    <Banknote className="h-5 w-5" />
+                    Kontant
+                  </Button>
+                  <Button
+                    onClick={() => setStep("mobilepay-qr")}
+                    size="lg"
+                    variant="secondary"
+                    className="w-full justify-center gap-2 flex-1 h-16"
+                  >
+                    <Smartphone className="h-5 w-5" />
+                    MobilePay
+                  </Button>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-4">
-                <p className="text-sm text-muted-foreground text-center">
-                  Lad kunden scanne QR-koden for at betale
-                </p>
+                <p className="text-sm text-muted-foreground text-center">Lad kunden scanne QR-koden for at betale</p>
                 {qrCodeUrl ? (
-                  <img
-                    src={qrCodeUrl}
-                    alt="MobilePay QR-kode"
-                    className="h-56 w-56 rounded-lg border border-border"
-                  />
+                  <img src={qrCodeUrl} alt="MobilePay QR-kode" className="h-78 w-78 rounded-lg border border-border" />
                 ) : (
-                  <div className="h-56 w-56 rounded-lg border border-border bg-muted animate-pulse" />
+                  <div className="h-78 w-78 rounded-lg border border-border bg-muted animate-pulse" />
                 )}
-                <Button onClick={handleMobilePayDone} className="w-full">
+                <Button onClick={handleMobilePayDone} className="w-full h-16">
                   Luk
                 </Button>
               </div>
