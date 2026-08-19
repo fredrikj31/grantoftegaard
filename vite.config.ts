@@ -9,7 +9,16 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    VitePWA({ registerType: "prompt", manifest: false }),
+    VitePWA({
+      registerType: "autoUpdate",
+      injectRegister: false,
+      manifest: false,
+      workbox: {
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
+      },
+    }),
   ],
   resolve: {
     alias: {
