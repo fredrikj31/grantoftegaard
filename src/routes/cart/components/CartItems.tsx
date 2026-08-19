@@ -1,19 +1,23 @@
+import { useState } from "react";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useCart } from "../../../providers/Cart";
 import { Button } from "@shadcn-ui/components/ui/button";
+import { PaymentDialog, type PaymentMethod } from "./PaymentDialog";
 
 export const CartItems = () => {
   const { items, removeItem, updateQuantity, getTotalPrice, clearCart } =
     useCart();
   const totalPrice = getTotalPrice();
   const navigate = useNavigate();
+  const [isPaymentDialogOpen, setIsPaymentDialogOpen] = useState(false);
 
-  const handleBought = () => {
+  const handlePaymentConfirmed = (paymentMethod: PaymentMethod) => {
     window.umami?.track("checkout-cart", {
       items: items.flatMap(({ name, quantity }) => Array(quantity).fill(name)),
       revenue: totalPrice,
       currency: "DKK",
+      paymentMethod,
     });
     clearCart();
     navigate("/");
@@ -91,7 +95,10 @@ export const CartItems = () => {
           <span>{totalPrice} kr</span>
         </div>
         <div className="flex flex-col gap-2">
-          <Button onClick={handleBought} className="w-full">
+          <Button
+            onClick={() => setIsPaymentDialogOpen(true)}
+            className="w-full"
+          >
             Køb
           </Button>
           <Button onClick={clearCart} variant="destructive" className="w-full">
@@ -99,6 +106,14 @@ export const CartItems = () => {
           </Button>
         </div>
       </div>
+
+      <PaymentDialog
+        isOpen={isPaymentDialogOpen}
+        items={items}
+        totalPrice={totalPrice}
+        onClose={() => setIsPaymentDialogOpen(false)}
+        onPaymentConfirmed={handlePaymentConfirmed}
+      />
     </div>
   );
 };
