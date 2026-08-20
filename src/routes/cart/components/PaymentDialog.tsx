@@ -12,23 +12,22 @@ import {
   DialogTitle,
 } from "@shadcn-ui/components/ui/dialog";
 
-const MOBILEPAY_PHONE = import.meta.env.VITE_MOBILEPAY_PHONE;
-
 export type PaymentMethod = "cash" | "mobilepay";
 
 interface PaymentDialogProps {
   isOpen: boolean;
   items: CartItem[];
   totalPrice: number;
+  mobilePayPhone: string;
   onClose: () => void;
   onPaymentConfirmed: (paymentMethod: PaymentMethod) => void;
 }
 
-function buildMobilePayLink(items: CartItem[], totalPrice: number) {
+function buildMobilePayLink(items: CartItem[], totalPrice: number, mobilePayPhone: string) {
   const comment = items.map((item) => `${item.quantity}x ${item.name}`).join("\n");
 
   const params = new URLSearchParams({
-    phone: MOBILEPAY_PHONE,
+    phone: mobilePayPhone,
     amount: totalPrice.toFixed(2),
     comment,
   });
@@ -36,15 +35,15 @@ function buildMobilePayLink(items: CartItem[], totalPrice: number) {
   return `https://qr.mobilepay.dk/paymentlink?${params.toString()}`;
 }
 
-export function PaymentDialog({ isOpen, items, totalPrice, onClose, onPaymentConfirmed }: PaymentDialogProps) {
+export function PaymentDialog({ isOpen, items, totalPrice, mobilePayPhone, onClose, onPaymentConfirmed }: PaymentDialogProps) {
   const [step, setStep] = useState<"choose" | "mobilepay-qr">("choose");
   const [qrCodeUrl, setQrCodeUrl] = useState("");
 
   useEffect(() => {
     if (step !== "mobilepay-qr") return;
-    const link = buildMobilePayLink(items, totalPrice);
+    const link = buildMobilePayLink(items, totalPrice, mobilePayPhone);
     QRCode.toDataURL(link, { width: 312, errorCorrectionLevel: "quartile" }).then(setQrCodeUrl);
-  }, [step, items, totalPrice]);
+  }, [step, items, totalPrice, mobilePayPhone]);
 
   const handleClose = () => {
     setStep("choose");

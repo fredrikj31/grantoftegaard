@@ -1,8 +1,12 @@
 import { Button } from "@shadcn-ui/components/ui/button";
 import { useCart } from "../providers/Cart";
-import { products } from "../data/products";
+import type { Product } from "../data/vegetables";
 
-export function ProductGrid() {
+interface ProductGridProps {
+  products: Product[];
+}
+
+export function ProductGrid({ products }: ProductGridProps) {
   const { addItem } = useCart();
 
   // Sort products by index

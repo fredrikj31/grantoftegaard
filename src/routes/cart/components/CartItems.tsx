@@ -5,7 +5,12 @@ import { useCart } from "../../../providers/Cart";
 import { Button } from "@shadcn-ui/components/ui/button";
 import { PaymentDialog, type PaymentMethod } from "./PaymentDialog";
 
-export const CartItems = () => {
+interface CartItemsProps {
+  returnTo: string;
+  mobilePayPhone: string;
+}
+
+export const CartItems = ({ returnTo, mobilePayPhone }: CartItemsProps) => {
   const { items, removeItem, updateQuantity, getTotalPrice, clearCart } = useCart();
   const totalPrice = getTotalPrice();
   const navigate = useNavigate();
@@ -19,7 +24,7 @@ export const CartItems = () => {
       paymentMethod,
     });
     clearCart();
-    navigate("/");
+    navigate(returnTo);
   };
 
   if (items.length === 0) {
@@ -98,6 +103,7 @@ export const CartItems = () => {
         isOpen={isPaymentDialogOpen}
         items={items}
         totalPrice={totalPrice}
+        mobilePayPhone={mobilePayPhone}
         onClose={() => setIsPaymentDialogOpen(false)}
         onPaymentConfirmed={handlePaymentConfirmed}
       />
