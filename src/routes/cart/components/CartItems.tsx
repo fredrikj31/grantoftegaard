@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useCart } from "../../../providers/Cart";
 import { Button } from "@shadcn-ui/components/ui/button";
 import { PaymentDialog, type PaymentMethod } from "./PaymentDialog";
+import { getStoreByPath } from "../../../config/stores";
 
 interface CartItemsProps {
   returnTo: string;
@@ -22,6 +23,7 @@ export const CartItems = ({ returnTo, mobilePayPhone }: CartItemsProps) => {
       revenue: totalPrice,
       currency: "DKK",
       paymentMethod,
+      store: getStoreByPath(returnTo).title,
     });
     clearCart();
     navigate(returnTo);
