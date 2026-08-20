@@ -1,11 +1,12 @@
 import { ShoppingCart } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useCart } from "../providers/Cart";
 import { Button } from "@shadcn-ui/components/ui/button";
 
 export function CartSummary() {
   const { getTotalPrice, items } = useCart();
   const totalPrice = getTotalPrice();
+  const { pathname } = useLocation();
 
   return (
     <div className="fixed bottom-0 left-0 right-0 flex items-center justify-between border-t border-border bg-card p-4 md:p-6">
@@ -13,7 +14,7 @@ export function CartSummary() {
         <p className="text-sm text-muted-foreground">Total</p>
         <p className="text-2xl font-bold md:text-3xl">{totalPrice} kr</p>
       </div>
-      <Link to="/cart">
+      <Link to="/cart" state={{ from: pathname }}>
         <Button size="lg" className="relative">
           <ShoppingCart className="h-5 w-5" />
           {items.length > 0 && (
