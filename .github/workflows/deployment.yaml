@@ -36,7 +36,8 @@ jobs:
       - name: Build application
         run: pnpm run build
         env:
-          VITE_MOBILEPAY_PHONE: ${{ secrets.VITE_MOBILEPAY_PHONE }}
+          VITE_MOBILEPAY_PHONE_VEGETABLES: ${{ secrets.VITE_MOBILEPAY_PHONE_VEGETABLES }}
+          VITE_MOBILEPAY_PHONE_FOOD: ${{ secrets.VITE_MOBILEPAY_PHONE_FOOD }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
