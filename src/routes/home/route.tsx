@@ -1,13 +1,15 @@
 import { Link } from "react-router";
 import { Button } from "@shadcn-ui/components/ui/button";
+import { PWAInstallButton } from "../../components/PWAInstallButton";
 import { stores } from "../../config/stores";
 
 export const HomeRoute = () => {
   return (
     <main className="flex flex-col min-h-screen bg-background">
       <header className="border-b border-border bg-card">
-        <div className="flex items-center px-4 py-4 md:px-6 md:py-6">
+        <div className="flex items-center justify-between px-4 py-4 md:px-6 md:py-6">
           <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Grantoftegaard</h1>
+          <PWAInstallButton />
         </div>
       </header>
 
