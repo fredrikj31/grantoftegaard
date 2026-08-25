@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "Grantoftegaard App",
+  "name": "Grantoftegaard",
   "short_name": "Grantoftegaard",
   "description": "En simple app, der hjælper med at beregne pris for grøntsager.",
   "theme_color": "#ffffff",
