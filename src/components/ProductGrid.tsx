@@ -1,6 +1,6 @@
 import { Button } from "@shadcn-ui/components/ui/button";
 import { useCart } from "../providers/Cart";
-import type { Product } from "../data/vegetables";
+import { Product } from "../config/stores";
 
 interface ProductGridProps {
   products: Product[];
