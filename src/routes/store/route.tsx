@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { ProductGrid } from "../../components/ProductGrid";
 import { CartSummary } from "../../components/CartSummary";
 import { Button } from "@shadcn-ui/components/ui/button";
-import type { Product } from "../../data/vegetables";
+import { Product } from "../../config/stores";
 
 interface StoreRouteProps {
   title: string;
@@ -20,9 +20,7 @@ export const StoreRoute = ({ title, products }: StoreRouteProps) => {
               <Home className="h-5 w-5" />
             </Button>
           </Link>
-          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
-            {title}
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">{title}</h1>
         </div>
       </header>
 
