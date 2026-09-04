@@ -1,6 +1,6 @@
-import { vegetables } from "../data/vegetables";
-import { cafe } from "../data/cafe";
-import { coffee } from "../data/coffee";
+import { vegetablesProducts } from "../data/vegetables";
+import { cafeProducts } from "../data/cafe";
+import { coffeeProducts } from "../data/coffee";
 
 export interface Product {
   id: string;
@@ -22,7 +22,7 @@ const vegetablesStore: StoreConfig = {
   path: "/vegetables",
   title: "Grøntsager",
   emoji: "🥕",
-  products: vegetables,
+  products: vegetablesProducts,
   mobilePayPhone: import.meta.env.VITE_MOBILEPAY_PHONE_VEGETABLES,
 };
 
@@ -30,7 +30,7 @@ const cafeStore: StoreConfig = {
   path: "/cafe",
   title: "Caféen",
   emoji: "🥪",
-  products: cafe,
+  products: cafeProducts,
   mobilePayPhone: "",
 };
 
@@ -38,7 +38,7 @@ const coffeeStore: StoreConfig = {
   path: "/coffee",
   title: "Kaffelugen",
   emoji: "☕",
-  products: coffee,
+  products: coffeeProducts,
   mobilePayPhone: "",
 };
 

@@ -1,6 +1,6 @@
 import { Product } from "../config/stores";
 
-export const cafe: Product[] = [
+export const cafeProducts: Product[] = [
   { id: "cafe-1", name: "Surdejsbolle m. ost", price: 30, emoji: "🫓", index: 0 },
   { id: "cafe-2", name: "Toast m. skinke & ost", price: 40, emoji: "🥪", index: 1 },
   { id: "cafe-3", name: "Croissant", price: 25, emoji: "🥐", index: 2 },
