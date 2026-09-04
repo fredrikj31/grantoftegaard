@@ -31,7 +31,7 @@ const cafeStore: StoreConfig = {
   title: "Caféen",
   emoji: "🥪",
   products: cafeProducts,
-  mobilePayPhone: "",
+  mobilePayPhone: import.meta.env.VITE_MOBILEPAY_PHONE_CAFE,
 };
 
 const coffeeStore: StoreConfig = {
@@ -39,7 +39,7 @@ const coffeeStore: StoreConfig = {
   title: "Kaffelugen",
   emoji: "☕",
   products: coffeeProducts,
-  mobilePayPhone: "",
+  mobilePayPhone: import.meta.env.VITE_MOBILEPAY_PHONE_COFFEE,
 };
 
 export const stores: StoreConfig[] = [vegetablesStore, cafeStore, coffeeStore];
