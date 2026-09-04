@@ -2,7 +2,7 @@ import { Product } from "../config/stores";
 
 export const vegetablesProducts: Product[] = [
   { id: "vegetables-1", name: "Bispehue", price: 35, emoji: "🎃", index: 1 },
-  { id: "vegetables-2", name: "Blomster", price: 30, emoji: "🌼", index: 2 },
+  { id: "vegetables-2", name: "Blomster", price: 30, emoji: "💐", index: 2 },
   { id: "vegetables-3", name: "Boljebeder", price: 25, emoji: "🍠", index: 3 },
   { id: "vegetables-4", name: "Broccoli", price: 25, emoji: "🥦", index: 4 },
   { id: "vegetables-5", name: "Chili", price: 20, emoji: "🌶️", index: 5 },
@@ -15,10 +15,10 @@ export const vegetablesProducts: Product[] = [
   { id: "vegetables-12", name: "Løg Gul", price: 20, emoji: "🧅", index: 12 },
   { id: "vegetables-13", name: "Løg Rød", price: 20, emoji: "🧅", index: 13 },
   { id: "vegetables-14", name: "Marktomater", price: 25, emoji: "🍅", index: 14 },
-  { id: "vegetables-15", name: "Palmekål", price: 30, emoji: "🌿", index: 15 },
+  { id: "vegetables-15", name: "Palmekål", price: 30, emoji: "🥬", index: 15 },
   { id: "vegetables-16", name: "Peber", price: 25, emoji: "🫑", index: 16 },
   { id: "vegetables-17", name: "Persille", price: 20, emoji: "🌿", index: 17 },
-  { id: "vegetables-18", name: "Porre", price: 10, emoji: "🧅", index: 18 },
+  { id: "vegetables-18", name: "Porre", price: 10, emoji: "🌱", index: 18 },
   { id: "vegetables-19", name: "Regnbue\nBladebeder", price: 30, emoji: "🌈", index: 19 },
   { id: "vegetables-20", name: "Rød Grønkål", price: 30, emoji: "🥬", index: 20 },
   { id: "vegetables-21", name: "Rød Spidskål", price: 30, emoji: "🥬", index: 21 },
