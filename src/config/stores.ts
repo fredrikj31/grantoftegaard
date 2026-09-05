@@ -1,6 +1,7 @@
 import { vegetablesProducts } from "../data/vegetables";
 import { cafeProducts } from "../data/cafe";
 import { coffeeProducts } from "../data/coffee";
+import { foodProducts } from "../data/food";
 
 export interface Product {
   id: string;
@@ -42,7 +43,15 @@ const coffeeStore: StoreConfig = {
   mobilePayPhone: import.meta.env.VITE_MOBILEPAY_PHONE_COFFEE,
 };
 
-export const stores: StoreConfig[] = [vegetablesStore, cafeStore, coffeeStore];
+const foodStore: StoreConfig = {
+  path: "/food",
+  title: "Madboden",
+  emoji: "🌭",
+  products: foodProducts,
+  mobilePayPhone: import.meta.env.VITE_MOBILEPAY_PHONE_FOOD,
+};
+
+export const stores: StoreConfig[] = [vegetablesStore, cafeStore, coffeeStore, foodStore];
 
 export function getStoreByPath(path: string): StoreConfig {
   return stores.find((store) => store.path === path) ?? vegetablesStore;
