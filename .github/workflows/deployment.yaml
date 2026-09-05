@@ -39,6 +39,7 @@ jobs:
           VITE_MOBILEPAY_PHONE_VEGETABLES: ${{ secrets.VITE_MOBILEPAY_PHONE_VEGETABLES }}
           VITE_MOBILEPAY_PHONE_CAFE: ${{ secrets.VITE_MOBILEPAY_PHONE_CAFE }}
           VITE_MOBILEPAY_PHONE_COFFEE: ${{ secrets.VITE_MOBILEPAY_PHONE_COFFEE }}
+          VITE_MOBILEPAY_PHONE_FOOD: ${{ secrets.VITE_MOBILEPAY_PHONE_FOOD }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
