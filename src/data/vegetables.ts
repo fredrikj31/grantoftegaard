@@ -10,7 +10,7 @@ export const vegetablesProducts: Product[] = [
   { id: "vegetables-7", name: "Gulerød\n(6 stk)", price: 20, emoji: "🥕", index: 6 },
   { id: "vegetables-8", name: "Hvidkål", price: 25, emoji: "🥬", index: 7 },
   { id: "vegetables-9", name: "Hvidløg", price: 10, emoji: "🧄", index: 8 },
-  { id: "vegetables-10", name: "Kartofler\n(1 kg)", price: 25, emoji: "🥔", index: 9 },
+  { id: "vegetables-10", name: "Kartofler", price: 25, emoji: "🥔", index: 9 },
   { id: "vegetables-11", name: "Løg\n(lille pose)", price: 20, emoji: "🧅", index: 10 },
   { id: "vegetables-12", name: "Palmekål", price: 30, emoji: "🥬", index: 11 },
   { id: "vegetables-13", name: "Persille", price: 20, emoji: "🌿", index: 12 },
