@@ -26,10 +26,10 @@ export function ProductGrid({ products }: ProductGridProps) {
             })
           }
           variant="outline"
-          className="h-auto flex-col items-center justify-center gap-2 py-4"
+          className="h-auto min-w-0 flex-col items-center justify-center gap-2 px-2 py-4"
         >
           <span className="text-3xl">{product.emoji}</span>
-          <span className="text-xs font-semibold text-center line-clamp-2 whitespace-pre-line">{product.name}</span>
+          <span className="w-full text-xs font-semibold text-center whitespace-normal wrap-break-word hyphens-auto">{product.name}</span>
           <span className="text-sm font-bold">{product.price} kr</span>
         </Button>
       ))}
